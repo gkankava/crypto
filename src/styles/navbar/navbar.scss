@@ -1,0 +1,297 @@
+.hamburger-react {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin-right: -11.5px;
+}
+nav {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    max-height: 44px;
+    cursor: pointer;
+  }
+  .nav-container {
+    .nav-menu-container {
+      display: none;
+    }
+
+    //user
+    .nav-user-container {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: row;
+      .backdrop {
+        width: 40vw;
+      }
+      .inner-container {
+        background-color: white;
+        width: 60vw;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        .label {
+          margin-left: 32px;
+          margin-right: 45px;
+          margin-top: 11px;
+          padding-right: 0px;
+          font-size: 16px;
+          font-weight: 400;
+          color: grey;
+          word-wrap: break-word;
+        }
+        ul {
+          list-style: none;
+          margin-left: 30px;
+          margin-bottom: 16px;
+          margin-top: 30px;
+          overflow-y: scroll;
+
+          li {
+            margin-bottom: 16px;
+          }
+          .nav-item {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            transition: all 0.3s ease 0s;
+            &:hover {
+              color: $logGrey;
+            }
+          }
+          .nav-link-active {
+            color: $blue;
+            &:hover {
+              color: $blue;
+            }
+          }
+        }
+      }
+      &.nav-active {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+nav {
+  .def-menu-mobile {
+    list-style: none;
+    margin-left: 30px;
+    margin-bottom: 16px;
+    margin-top: 30px;
+    overflow-y: scroll;
+
+    li {
+      margin-bottom: 16px;
+    }
+    .nav-item {
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      color: black;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        color: $logGrey;
+      }
+    }
+    .nav-link-active {
+      color: $blue;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
+
+@media screen and(min-width: 940px) {
+  .hamburger-react {
+    display: none;
+  }
+  nav {
+    padding-top: 48px;
+  }
+
+  nav {
+    .nav-container {
+      display: flex;
+      .nav-menu-container {
+        display: flex;
+        align-items: center;
+        .nav-list-item {
+          margin-left: 50px;
+        }
+        .drop-down-menu {
+          position: relative;
+
+          span {
+            color: #d7ddff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            img {
+              margin-left: 4px;
+              height: 8px;
+              width: 8px;
+              transition: all 0.3s ease;
+              &.arrow-rotate {
+                transform: rotatex(180deg);
+              }
+            }
+          }
+          .drop-down-menu-content {
+            visibility: hidden;
+            opacity: 0;
+            list-style: none;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: transparent;
+            padding: 20px 0 20px 20px;
+            min-width: 230px;
+            text-align: left;
+            transition: all 0.3s ease;
+
+            .cont {
+              background-color: white;
+              padding: 20px;
+              border-radius: 4px;
+              li {
+                margin-bottom: 15px;
+              }
+
+              a {
+                text-decoration: none;
+                color: black;
+                &:hover {
+                  color: $blue;
+                }
+              }
+              :last-child {
+                margin-bottom: 0;
+              }
+            }
+            &.drop-down-active {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+        .nav-list-item {
+          a {
+            color: #d7ddff;
+            font-size: 16px;
+            font-weight: 500;
+            &:hover {
+              color: #c7cadb;
+            }
+          }
+        }
+      }
+
+      //user
+      .nav-user-container {
+        width: 180px;
+        height: auto;
+        position: static;
+        transform: unset;
+        transition: transform 0.3s ease;
+        display: block;
+        text-align: right;
+        .backdrop {
+          width: 40vw;
+          display: none;
+        }
+        .inner-container {
+          background-color: transparent;
+          width: unset;
+          padding-top: 0;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          &:hover ul {
+            max-height: 500px;
+          }
+          .label {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            word-wrap: break-word;
+          }
+
+          ul {
+            list-style: none;
+            margin: 0;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: white;
+            width: 195px;
+            top: 35px;
+            left: 0;
+            border-radius: 7px;
+            max-height: 0;
+
+            transition: max-height 0.5s;
+
+            li {
+              margin: 0;
+              text-align: left;
+              padding: 12px 0;
+            }
+            .nav-item {
+              cursor: pointer;
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 600;
+              color: black;
+              transition: all 0.3s ease 0s;
+              padding-left: 14px;
+              &:hover {
+                color: $logGrey;
+              }
+            }
+            .nav-link-active {
+              color: $blue;
+              &:hover {
+                color: $blue;
+              }
+            }
+          }
+        }
+        &.nav-active {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+.login-btn {
+  width: 132px;
+  background: #267df4;
+  border: none;
+  color: #fff;
+  height: 42px;
+  font-size: 16px;
+  border-radius: 50px;
+  padding: 0 26px;
+  cursor: pointer;
+  &:active,
+  :focus {
+    opacity: 0.5;
+  }
+}

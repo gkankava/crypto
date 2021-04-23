@@ -1,7 +1,50 @@
 /* 
 
--- 940px      Mobile
+Resolutions :
+
+- 940px       Mobile
 940-1200px    Mid
 1200-1400px   Large     
+1400-1920     Big
+1920-         Huge (max 1600px)
 
 */
+
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+$pop: "Poppins", sans-serif;
+
+* {
+  font-family: $pop;
+  :active {
+    outline: none;
+  }
+}
+
+//container
+
+.container {
+  max-width: 100%;
+  margin: 0 20px;
+}
+
+@media screen and(min-width: 940px) {
+  .container {
+    max-width: 100%;
+    margin: 0 40px;
+  }
+}
+@media screen and(min-width: 1200px) {
+  .container {
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and(min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
