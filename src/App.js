@@ -4,6 +4,7 @@ import { userProvider, logout } from "./store/user/auth";
 import "./styles/index.scss";
 
 import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 import { setTokenHeader } from "./services/api";
 import jwtDecode from "jwt-decode";
 
@@ -32,8 +33,8 @@ function App() {
       <div className="bg" />
       <Navbar currentUser={currentUser} logout={logout} cb={setCurrentUser} />
       {/* currentUser.isAuthenticated && <UserPanel />  */}
-
-      {/* footer */}
+      {/* <div style={{ height: "1000px" }}></div> */}
+      <Footer />
       {/* cookies -- localstorage */}
     </BrowserRouter>
   );
