@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 let keys = Object.keys(footerLinks);
 
 export const columns = keys.map((k, i) => (
-  <div className="col col-container">
+  <div className="col col-container" key={i}>
     <span className="col-title">{k}</span>
     <ul className="col-items">
       {footerLinks[k].map((item, key) => (

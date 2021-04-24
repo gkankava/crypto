@@ -170,7 +170,11 @@ function Navbar({ currentUser, logout, cb }) {
         </div>
         {/* right */}
         {/* {currentUser.isAuthenticated && ( */}
-        <div className={`nav-user-container ${navActive && "nav-active"}`}>
+        <div
+          className={`nav-user-container ${navActive && "nav-active"} ${
+            !currentUser.isAuthenticated && "logged-false"
+          }`}
+        >
           <div
             className="backdrop"
             onClick={() => {

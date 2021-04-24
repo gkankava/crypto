@@ -277,6 +277,9 @@ nav {
           transform: translateX(0);
         }
       }
+      .logged-false {
+        display: none;
+      }
     }
   }
 }
