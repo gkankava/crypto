@@ -36,14 +36,14 @@ $pop: "Poppins", sans-serif;
 }
 @media screen and(min-width: 1200px) {
   .container {
-    max-width: 75vw;
+    width: 75vw;
     margin-left: auto;
     margin-right: auto;
   }
 }
 @media screen and(min-width: 1920px) {
   .container {
-    max-width: 1600px;
+    width: 1600px;
     margin-left: auto;
     margin-right: auto;
   }
