@@ -7,6 +7,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
   img {
     max-height: 44px;
     cursor: pointer;
@@ -52,7 +53,7 @@ nav {
           margin-bottom: 16px;
           margin-top: 30px;
           overflow-y: scroll;
-
+          z-index: 10;
           li {
             margin-bottom: 16px;
           }
