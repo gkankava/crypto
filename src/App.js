@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import { setTokenHeader } from "./services/api";
+
 import { userProvider, logout } from "./store/user/auth";
-import "./styles/index.scss";
+import { modalProvider } from "./store/modal_state/modalState";
 
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-import { setTokenHeader } from "./services/api";
-import jwtDecode from "jwt-decode";
+import AuthModal from "./components/shared/auth_modal/AuthModal";
+
+import "./styles/index.scss";
 
 function App() {
   const { currentUser, setCurrentUser } = userProvider();
+  const { authModalState } = modalProvider();
 
   useEffect(() => {
-    localStorage.setItem(
-      "jwtToken",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvcmprIiwiaWQiOjE1MTYyMzkwMjJ9.P916lB8fRqSazXWMauDPxl28l3xvXB0PmuSkSap8-Ws"
-    );
+    // localStorage.setItem(
+    //   "jwtToken",
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvcmprIiwiaWQiOjE1MTYyMzkwMjJ9.P916lB8fRqSazXWMauDPxl28l3xvXB0PmuSkSap8-Ws"
+    // );
     if (localStorage.getItem("jwtToken")) {
       setTokenHeader(localStorage.jwtToken);
       try {
@@ -36,6 +41,7 @@ function App() {
       {/* <div style={{ height: "1000px" }}></div> */}
       <Footer />
       {/* cookies -- localstorage */}
+      {authModalState.activeState && <AuthModal type={authModalState.type} />}
     </BrowserRouter>
   );
 }

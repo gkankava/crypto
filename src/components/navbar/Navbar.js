@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { modalProvider } from "../../store/modal_state/modalState";
+
 import Hamburger from "./Hamburger";
 import logo from "../../assets/images/logos/ciex-logo.svg";
 import arrow from "../../assets/icons/arrow.svg";
@@ -72,15 +74,19 @@ function Navbar({ currentUser, logout, cb }) {
       );
     });
 
+  const [navActive, setNavActive] = React.useState(false);
+  const [compHover, setCompHover] = React.useState(false);
+  const [feesHover, setFeesHover] = React.useState(false);
+
+  const { setAuthModalState } = modalProvider();
+
+  const logIn = () => setAuthModalState(true);
+
   const logOut = () => {
     logout(() => {
       cb(false, null);
     });
   };
-
-  const [navActive, setNavActive] = React.useState(false);
-  const [compHover, setCompHover] = React.useState(false);
-  const [feesHover, setFeesHover] = React.useState(false);
 
   return (
     <nav className="container">
@@ -164,12 +170,13 @@ function Navbar({ currentUser, logout, cb }) {
           )}
           {!currentUser.isAuthenticated && (
             <div className="nav-list-item">
-              <button className="login-btn">Login</button>
+              <button onClick={logIn} className="login-btn">
+                Login
+              </button>
             </div>
           )}
         </div>
         {/* right */}
-        {/* {currentUser.isAuthenticated && ( */}
         <div
           className={`nav-user-container ${navActive && "nav-active"} ${
             !currentUser.isAuthenticated && "logged-false"
@@ -210,7 +217,7 @@ function Navbar({ currentUser, logout, cb }) {
                     className="nav-item"
                     onClick={() => {
                       setNavActive(false);
-                      logOut();
+                      logIn();
                     }}
                   >
                     Log In
@@ -220,10 +227,8 @@ function Navbar({ currentUser, logout, cb }) {
             )}
           </div>
         </div>
-        {/* )} */}
       </div>
       <Hamburger burgerStatus={navActive} setBurgerStatus={setNavActive} />
-      {/* default Moblile menu (side drawer) */}
     </nav>
   );
 }

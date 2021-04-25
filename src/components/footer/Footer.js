@@ -20,7 +20,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href="instagram.com" target="_blank" rel="noreferrer">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer">
                 <GrInstagram color="#69696975" size={24} />
               </a>
             </li>

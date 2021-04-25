@@ -1,6 +1,7 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
 import { setTokenHeader } from "../../services/api";
+
 const store = (set) => ({
   currentUser: {
     isAuthenticated: false,
