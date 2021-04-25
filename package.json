@@ -20,7 +20,7 @@
     "web-vitals": "^1.1.1",
     "zustand": "^3.4.1"
   },
-  "proxy": "https://testapi.cryptoiex.io",
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
