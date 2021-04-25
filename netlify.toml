@@ -1,4 +1,6 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
+  to = "https://testapi.cryptoiex.io"
   status = 200
+  force = true
+  headers = {X-From = "Netlify"}
