@@ -7,7 +7,7 @@ export function setAuthorizationToken(token) {
 
 export const fetchUserData = (token, callback) => {
   return new Promise((resolve, reject) => {
-    return apiCall("get", `/user/profile`)
+    return apiCall("get", `/api/user/profile`)
       .then((data) => {
         callback(true, { ...data });
         resolve();
@@ -20,7 +20,7 @@ export const fetchUserData = (token, callback) => {
 
 export function authUser(userData, setSubmitting, callback, toast) {
   return new Promise((resolve, reject) => {
-    return apiCall("post", `/user/login`, userData)
+    return apiCall("post", `/api/user/login`, userData)
       .then((token) => {
         localStorage.setItem("jwtToken", token);
         setAuthorizationToken(token);
@@ -41,7 +41,7 @@ export function authUser(userData, setSubmitting, callback, toast) {
 
 export function registerUser(userData, setSubmitting, toast) {
   return new Promise((resolve, reject) => {
-    return apiCall("post", `/user/register`, userData)
+    return apiCall("post", `/api/user/register`, userData)
       .then((res) => {
         toast(res.message, toaster.info);
         setSubmitting(false);
