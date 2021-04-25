@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import RePasswordForm from "./RePasswordForm";
 
+import { userProvider } from "../../../store/user/auth";
 import { modalProvider } from "../../../store/modal_state/modalState";
 
 import playStore from "../../../assets/icons/play-store.svg";
@@ -20,6 +21,8 @@ function AuthModal({ type }) {
   useEffect(() => {
     setRePasswordActive(false);
   }, [authType]);
+
+  const { setCurrentUser } = userProvider();
 
   return (
     <div className="auth-modal" onClick={_closeModal}>
@@ -72,11 +75,15 @@ function AuthModal({ type }) {
           </div>
           <div className="form-container">
             {authType === "signin" && rePasswordActive === false ? (
-              <LoginForm resetPassword={setRePasswordActive} />
+              <LoginForm
+                resetPassword={setRePasswordActive}
+                setCurrentUser={setCurrentUser}
+                closeModal={_closeModal}
+              />
             ) : authType === "signin" && rePasswordActive === true ? (
-              <RePasswordForm />
+              <RePasswordForm closeModal={_closeModal} />
             ) : (
-              <SignupForm />
+              <SignupForm closeModal={_closeModal} />
             )}
           </div>
         </div>

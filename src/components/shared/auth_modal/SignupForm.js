@@ -1,51 +1,23 @@
 import React, { useRef, createRef } from "react";
 import { useFormik } from "formik";
+import { useToasts } from "react-toast-notifications";
+
+import { validate } from "./signUpFormValidator";
 import { cl } from "../countryList";
 
-function SignupForm() {
-  const validate = (values) => {
-    const errors = {};
-    if (!values.name) {
-      errors.name = "name is required";
-    } else if (values.name.length < 2) {
-      errors.name = "name must be at least 2 characters length";
-    }
-    if (!values.surname) {
-      errors.surname = "surname is required";
-    } else if (values.surname.length < 2) {
-      errors.surname = "surname must be at least 2 characters length";
-    }
-    if (!values.email) {
-      errors.email = "email is required";
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "invalid email address";
-    }
-    if (!values.country) {
-      errors.country = "country is required";
-    }
-    if (!values.password) {
-      errors.password = "password is required";
-    } else if (values.password.length < 8) {
-      errors.password = "password must be at least 8 characters length";
-    }
-    if (!values.rePassword) {
-      errors.rePassword = "retype password";
-    } else if (values.rePassword !== values.password) {
-      errors.rePassword = "passwords don't match";
-    }
-    if (!values.ts) {
-      errors.ts = "country is required";
-    }
-    return errors;
-  };
+import { registerUser } from "../../../handlers/user";
 
+function SignupForm({ closeModal }) {
+  const { addToast } = useToasts();
   const onSubmit = (values, { setSubmitting }) => {
-    formik.values.password = "";
-    formik.values.rePassword = "";
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    registerUser(values, setSubmitting, addToast)
+      .then(() => {
+        closeModal();
+      })
+      .catch(() => {
+        formik.values.password = "";
+        formik.values.rePassword = "";
+      });
   };
 
   const formik = useFormik({
@@ -203,6 +175,10 @@ function SignupForm() {
           id="country"
           onChange={formik.handleChange}
         >
+          <option value="0" label="Select a country ... ">
+            Select a country ...{" "}
+          </option>
+
           {countrySelect()}
         </select>
       </div>

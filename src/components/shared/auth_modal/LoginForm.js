@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
 import { useFormik } from "formik";
+import { useToasts } from "react-toast-notifications";
 
-function LoginForm({ resetPassword }) {
+import { authUser } from "../../../handlers/user";
+
+function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
+  const { addToast } = useToasts();
   const validate = (values) => {
     const errors = {};
     if (!values.email) {
@@ -18,11 +22,9 @@ function LoginForm({ resetPassword }) {
   };
 
   const onSubmit = (values, { setSubmitting }) => {
-    formik.resetForm();
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    authUser(values, setSubmitting, setCurrentUser, addToast).then(() => {
+      closeModal();
+    });
   };
 
   const formik = useFormik({

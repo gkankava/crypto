@@ -192,7 +192,7 @@ function Navbar({ currentUser, logout, cb }) {
             {currentUser.isAuthenticated ? (
               <>
                 <span className="label">
-                  Hello, {currentUser.user.username}
+                  Hello, {currentUser.user.user.name}
                 </span>
                 <ul>
                   {protectedNavItems}

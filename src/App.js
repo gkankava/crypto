@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import jwtDecode from "jwt-decode";
-import { setTokenHeader } from "./services/api";
+import { ToastProvider } from "react-toast-notifications";
 
+import { setTokenHeader } from "./services/api";
 import { userProvider, logout } from "./store/user/auth";
 import { modalProvider } from "./store/modal_state/modalState";
 
+import { fetchUserData } from "./handlers/user";
+
+import Main from "./components/main/Main";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import AuthModal from "./components/shared/auth_modal/AuthModal";
@@ -17,31 +20,29 @@ function App() {
   const { authModalState } = modalProvider();
 
   useEffect(() => {
-    // localStorage.setItem(
-    //   "jwtToken",
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvcmprIiwiaWQiOjE1MTYyMzkwMjJ9.P916lB8fRqSazXWMauDPxl28l3xvXB0PmuSkSap8-Ws"
-    // );
     if (localStorage.getItem("jwtToken")) {
       setTokenHeader(localStorage.jwtToken);
       try {
-        let decoded = jwtDecode(localStorage.jwtToken);
-        setCurrentUser(true, { ...decoded });
+        fetchUserData(localStorage.jwtToken, setCurrentUser);
       } catch (err) {
         setCurrentUser(false, null);
       }
     }
     // eslint-disable-next-line
-  }, [localStorage]);
+  }, []);
 
   return (
     <BrowserRouter>
-      <div className="bg" />
-      <Navbar currentUser={currentUser} logout={logout} cb={setCurrentUser} />
-      {/* currentUser.isAuthenticated && <UserPanel />  */}
-      {/* <div style={{ height: "1000px" }}></div> */}
-      <Footer />
-      {/* cookies -- localstorage */}
-      {authModalState.activeState && <AuthModal type={authModalState.type} />}
+      <ToastProvider autoDismiss={true} autoDismissTimeout={3000}>
+        <div className="bg" />
+        <Navbar currentUser={currentUser} logout={logout} cb={setCurrentUser} />
+        {/* currentUser.isAuthenticated && <UserPanel />  */}
+        {/* <div style={{ height: "1000px" }}></div> */}
+        <Main />
+        <Footer />
+        {/* cookies -- localstorage */}
+        {authModalState.activeState && <AuthModal type={authModalState.type} />}
+      </ToastProvider>
     </BrowserRouter>
   );
 }
