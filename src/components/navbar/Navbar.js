@@ -191,9 +191,7 @@ function Navbar({ currentUser, logout, cb }) {
           <div className="inner-container">
             {currentUser.isAuthenticated ? (
               <>
-                <span className="label">
-                  Hello, {currentUser.user.user.name}
-                </span>
+                <span className="label">Hello, {currentUser.user.name}</span>
                 <ul>
                   {protectedNavItems}
                   <li>
