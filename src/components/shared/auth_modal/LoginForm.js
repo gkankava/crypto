@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useFormik } from "formik";
 import { useToasts } from "react-toast-notifications";
 
-import { authUser } from "../../../handlers/user";
+import { authUser } from "../../../store/actions/user";
 
 function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
   const { addToast } = useToasts();

@@ -1,5 +1,5 @@
-import { apiCall, setTokenHeader } from "../services/api";
-import * as toaster from "../components/shared/toastrConfig";
+import { apiCall, setTokenHeader } from "../../services/api";
+import * as toaster from "../../components/shared/toastrConfig";
 
 export function setAuthorizationToken(token) {
   setTokenHeader(token);
@@ -7,7 +7,7 @@ export function setAuthorizationToken(token) {
 
 export const fetchUserData = (token, callback) => {
   return new Promise((resolve, reject) => {
-    return apiCall("get", `https://testapi.cryptoiex.io/api/user/profile/`)
+    return apiCall("get", `https://testapi.cryptoiex.io/api/user/profile`)
       .then((data) => {
         callback(true, { ...data });
         resolve();

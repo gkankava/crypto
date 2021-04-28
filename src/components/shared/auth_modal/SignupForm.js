@@ -5,7 +5,7 @@ import { useToasts } from "react-toast-notifications";
 import { validate } from "./signUpFormValidator";
 import { cl } from "../countryList";
 
-import { registerUser } from "../../../handlers/user";
+import { registerUser } from "../../../store/actions/user";
 
 function SignupForm({ closeModal }) {
   const { addToast } = useToasts();
