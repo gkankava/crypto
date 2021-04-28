@@ -5,7 +5,6 @@ import { ToastProvider } from "react-toast-notifications";
 import { setTokenHeader } from "./services/api";
 import { userProvider, logout } from "./store/user/auth";
 import { modalProvider } from "./store/modal_state/modalState";
-import { pagesProvider } from "./store/pages";
 
 import { fetchUserData } from "./store/actions/user";
 

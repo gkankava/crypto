@@ -1,0 +1,30 @@
+.accordion {
+  width: 100%;
+  .accordion-box {
+    position: relative;
+    margin-bottom: 3vh;
+
+    h4 {
+      position: relative;
+      padding: 17px 50px 20px 22px;
+      background-color: #e5e5e5;
+      border-radius: 7px;
+      color: black;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .content {
+      position: relative;
+      padding: 0 17px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+
+      transition: all 0.3s ease;
+    }
+    .accordion-active {
+      padding-top: 15px;
+      max-height: 1000px;
+    }
+  }
+}

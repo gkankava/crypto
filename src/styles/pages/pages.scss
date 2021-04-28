@@ -1,0 +1,35 @@
+section {
+  h1 {
+    text-align: center;
+    margin-bottom: 3vh;
+    color: white;
+    font-weight: 500;
+  }
+  color: #333;
+  ul {
+    list-style-type: disc;
+  }
+}
+.content-wrapper {
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px 40px;
+  p {
+    strong {
+      color: black;
+    }
+  }
+}
+
+#about {
+  p {
+    font-size: 16px;
+    color: white;
+    &:first-child {
+      font-size: 24px;
+    }
+    &:nth-child(4) {
+      font-size: 24px;
+    }
+  }
+}

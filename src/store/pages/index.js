@@ -4,21 +4,21 @@ import { devtools } from "zustand/middleware";
 const store = (set) => ({
   aboutPage: "",
   setAboutPage: (content) => {
-    set(() => ({ aboutPage: content }));
+    set(() => ({ aboutPage: content.page_description }));
   },
   legalPage: "",
-  setAboutPage: (content) => {
-    set(() => ({ aboutPage: content }));
+  setLegalPage: (content) => {
+    set(() => ({ legalPage: content.page_description }));
   },
   termsPage: "",
   setTermsPage: (content) => {
-    set(() => ({ termsPage: content }));
+    set(() => ({ termsPage: content.page_description }));
   },
   refundPage: "",
   setRefundPage: (content) => {
-    set(() => ({ refundPage: content }));
+    set(() => ({ refundPage: content.page_description }));
   },
-  faqPage: "",
+  faqPage: [],
   setFaqPage: (content) => {
     set(() => ({ faqPage: content }));
   },

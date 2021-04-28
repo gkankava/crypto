@@ -21,17 +21,26 @@ $pop: "Poppins", sans-serif;
   }
 }
 
+// section
+
+section {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
 //container
 
 .container {
   max-width: 100%;
-  margin: 0 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 @media screen and(min-width: 940px) {
   .container {
     max-width: 100%;
-    margin: 0 40px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 @media screen and(min-width: 1200px) {
@@ -43,7 +52,7 @@ $pop: "Poppins", sans-serif;
 }
 @media screen and(min-width: 1920px) {
   .container {
-    width: 1600px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
