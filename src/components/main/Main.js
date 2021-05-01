@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-
-import { userProvider } from "../../store/user/auth";
 
 import Landing from "../../containers/Landing";
 import Dashboard from "../../containers/Dashboard";
@@ -11,16 +9,7 @@ import Terms from "../../containers/Terms";
 import Refund from "../../containers/Refund";
 import Faq from "../../containers/Faq";
 
-function Main({ history }) {
-  const { currentUser } = userProvider();
-
-  useEffect(() => {
-    if (currentUser.isAuthenticated) {
-      history.push("/dashboard");
-    } else history.push("/");
-    // eslint-disable-next-line
-  }, [currentUser.isAuthenticated]);
-
+function Main() {
   return (
     <Switch>
       <Route exact path="/" render={(props) => <Landing {...props} />} />

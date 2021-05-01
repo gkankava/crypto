@@ -23,13 +23,15 @@ section {
 
 #about {
   p {
-    font-size: 16px;
-    color: white;
+    font-size: 14px;
+    color: black;
     &:first-child {
-      font-size: 24px;
+      font-size: 22px;
+      // color: black;
     }
     &:nth-child(4) {
-      font-size: 24px;
+      margin-top: 20px;
+      font-size: 22px;
     }
   }
 }

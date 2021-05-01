@@ -239,7 +239,7 @@ function SignupForm({ closeModal }) {
         )}
       </div>
       <button type="submit" disabled={formik.isSubmitting}>
-        Sign In
+        Sign Up
       </button>
       <div className="terms">
         <input

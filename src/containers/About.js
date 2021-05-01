@@ -14,7 +14,7 @@ function About() {
 
   return (
     <section id="about" className="container">
-      {parse(aboutPage)}
+      <div className="content-wrapper">{parse(aboutPage)}</div>
     </section>
   );
 }
