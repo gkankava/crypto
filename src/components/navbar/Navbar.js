@@ -171,7 +171,7 @@ function Navbar({ currentUser, logout, cb }) {
           {!currentUser.isAuthenticated && (
             <div className="nav-list-item">
               <button onClick={logIn} className="login-btn">
-                Login
+                Log In
               </button>
             </div>
           )}

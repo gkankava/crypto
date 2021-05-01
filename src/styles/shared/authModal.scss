@@ -62,7 +62,7 @@
   .right {
     height: 100%;
     width: 100%;
-    min-width: 300px;
+    min-width: 250px;
     max-width: 300px;
   }
 }
@@ -101,6 +101,9 @@
   .auth-modal .modal-container {
     .left {
       display: block;
+    }
+    .right {
+      min-width: 300px;
     }
   }
 }

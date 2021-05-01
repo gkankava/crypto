@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import { useToasts } from "react-toast-notifications";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { authUser } from "../../../store/actions/user";
+import axios from "axios";
 
 function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
   const { addToast } = useToasts();
@@ -50,6 +52,33 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
       }
     }
   };
+
+  //recaptcha
+
+  const reRef = useRef();
+  const [reToken, setReToken] = useState();
+
+  const verifyReToken = () => {
+    try {
+      axios
+        .post("https://www.google.com/recaptcha/api/siteverify", {
+          secret: process.env.REACT_APP_RE_SITE_KEY,
+          response: reToken,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    if (reToken) {
+      verifyReToken();
+    }
+    // eslint-disable-next-line
+  }, [reToken]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -114,6 +143,11 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
       <button type="submit" disabled={formik.isSubmitting}>
         Sign In
       </button>
+      <ReCAPTCHA
+        sitekey={process.env.REACT_APP_RE_SITE_KEY}
+        onChange={(val) => setReToken(val)}
+        ref={reRef}
+      />
     </form>
   );
 }
