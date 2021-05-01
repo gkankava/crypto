@@ -2,7 +2,7 @@ import { apiCall } from "../../services/api";
 
 export const fetchPage = (path, callback) => {
   return new Promise((resolve, reject) => {
-    return apiCall("get", `https://testapi.cryptoiex.io/api/${path}`)
+    return apiCall("get", `/api/${path}`)
       .then((data) => {
         callback(data);
         resolve();
