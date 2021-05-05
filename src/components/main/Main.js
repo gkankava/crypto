@@ -8,6 +8,7 @@ import Legal from "../../containers/Legal";
 import Terms from "../../containers/Terms";
 import Refund from "../../containers/Refund";
 import Faq from "../../containers/Faq";
+import Contact from "../../containers/Contact";
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
       <Route path="/terms" render={(props) => <Terms {...props} />} />
       <Route path="/refund" render={(props) => <Refund {...props} />} />
       <Route path="/faq" render={(props) => <Faq {...props} />} />
+      <Route path="/contact" render={(props) => <Contact {...props} />} />
     </Switch>
   );
 }

@@ -129,7 +129,10 @@ nav {
         display: flex;
         align-items: center;
         .nav-list-item {
+          display: flex;
           margin-left: 50px;
+          align-items: center;
+          justify-content: center;
         }
         .drop-down-menu {
           position: relative;
@@ -294,6 +297,7 @@ nav {
   border-radius: 50px;
   padding: 0 26px;
   cursor: pointer;
+  margin-bottom: 0;
   &:active,
   :focus {
     opacity: 0.5;

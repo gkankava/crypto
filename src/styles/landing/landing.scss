@@ -1,6 +1,9 @@
 #hero {
+  margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 246px);
   .col {
     width: 100%;
     display: flex;
@@ -37,7 +40,7 @@
       flex-direction: row;
       input {
         box-sizing: border-box;
-        background: rgba($color: white, $alpha: 0.6) 0 0 no-repeat padding-box;
+        background: rgba($color: white, $alpha: 0.8) 0 0 no-repeat padding-box;
         border: 0;
         border-radius: 8px;
         outline: none;
@@ -46,7 +49,7 @@
         width: 100%;
         padding-left: 13px;
         height: 60px;
-        color: #fff;
+        color: #26272d;
         font-weight: 500;
         float: left;
         font-size: 25px;
@@ -105,6 +108,7 @@
 
 @media screen and(min-width: 940px) {
   #hero {
+    margin-top: 100px;
     flex-direction: row;
     justify-content: space-between;
     .col {

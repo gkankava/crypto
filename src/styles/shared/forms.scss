@@ -30,10 +30,10 @@
   .input-error {
     border-color: $red;
   }
-  .input-error-msg {
-    font-size: 12px;
-    color: $red;
-  }
+}
+.input-error-msg {
+  font-size: 12px;
+  color: $red;
 }
 
 button {
@@ -47,6 +47,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   color: white;
+  margin-bottom: 20px;
   &:disabled {
     background-color: rgb(192, 192, 192);
   }

@@ -4,7 +4,6 @@ import { useToasts } from "react-toast-notifications";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { authUser } from "../../../store/actions/user";
-import axios from "axios";
 
 function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
   const { addToast } = useToasts();
@@ -20,6 +19,9 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
     } else if (values.password.length < 8) {
       errors.password = "password must be at least 8 characters length";
     }
+    if (!reToken) {
+      errors.reCa = "reCaptcha is required";
+    }
     return errors;
   };
 
@@ -27,6 +29,8 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
     authUser(values, setSubmitting, setCurrentUser, addToast).then(() => {
       closeModal();
     });
+    reRef.current.reset();
+    setReToken();
   };
 
   const formik = useFormik({
@@ -57,28 +61,6 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
 
   const reRef = useRef();
   const [reToken, setReToken] = useState();
-
-  const verifyReToken = () => {
-    try {
-      axios
-        .post("https://www.google.com/recaptcha/api/siteverify", {
-          secret: process.env.REACT_APP_RE_SITE_KEY,
-          response: reToken,
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  React.useEffect(() => {
-    if (reToken) {
-      verifyReToken();
-    }
-    // eslint-disable-next-line
-  }, [reToken]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -148,6 +130,9 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
         onChange={(val) => setReToken(val)}
         ref={reRef}
       />
+      {formik.errors.reCa && (
+        <p className="input-error-msg">{formik.errors.reCa}</p>
+      )}
     </form>
   );
 }

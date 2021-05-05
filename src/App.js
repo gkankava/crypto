@@ -12,6 +12,7 @@ import Main from "./components/main/Main";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import AuthModal from "./components/shared/auth_modal/AuthModal";
+import UserPanel from "./components/shared/UserPanel";
 
 import "./styles/index.scss";
 
@@ -36,8 +37,7 @@ function App() {
       <ToastProvider autoDismiss={true} autoDismissTimeout={3000}>
         <div className="bg" />
         <Navbar currentUser={currentUser} logout={logout} cb={setCurrentUser} />
-        {/* currentUser.isAuthenticated && <UserPanel />  */}
-        {/* <div style={{ height: "1000px" }}></div> */}
+        {currentUser.isAuthenticated && <UserPanel />}
         <Main />
         <Footer />
         {/* cookies -- localstorage */}
