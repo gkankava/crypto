@@ -19,9 +19,9 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
     } else if (values.password.length < 8) {
       errors.password = "password must be at least 8 characters length";
     }
-    if (!reToken) {
-      errors.reCa = "reCaptcha is required";
-    }
+    // if (!reToken) {
+    //   errors.reCa = "reCaptcha is required";
+    // }
     return errors;
   };
 
@@ -125,14 +125,14 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
       <button type="submit" disabled={formik.isSubmitting}>
         Sign In
       </button>
-      <ReCAPTCHA
+      {/* <ReCAPTCHA
         sitekey={process.env.REACT_APP_RE_SITE_KEY}
         onChange={(val) => setReToken(val)}
         ref={reRef}
-      />
-      {formik.errors.reCa && (
+      /> */}
+      {/* {formik.errors.reCa && (
         <p className="input-error-msg">{formik.errors.reCa}</p>
-      )}
+      )} */}
     </form>
   );
 }
