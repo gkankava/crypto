@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import { useToasts } from "react-toast-notifications";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 import { authUser } from "../../../store/actions/user";
 
@@ -29,8 +29,8 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
     authUser(values, setSubmitting, setCurrentUser, addToast).then(() => {
       closeModal();
     });
-    reRef.current.reset();
-    setReToken();
+    // reRef.current.reset();
+    // setReToken();
   };
 
   const formik = useFormik({
@@ -59,8 +59,8 @@ function LoginForm({ resetPassword, setCurrentUser, closeModal }) {
 
   //recaptcha
 
-  const reRef = useRef();
-  const [reToken, setReToken] = useState();
+  // const reRef = useRef();
+  // const [reToken, setReToken] = useState();
 
   return (
     <form onSubmit={formik.handleSubmit}>
