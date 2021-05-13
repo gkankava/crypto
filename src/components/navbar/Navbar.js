@@ -159,7 +159,7 @@ function Navbar({ currentUser, logout, cb }) {
           {currentUser.isAuthenticated && (
             <div className="nav-list-item">
               <NavLink
-                to="/support"
+                to="/contact"
                 activeClassName="nav-link-active"
                 className="nav-item"
                 onClick={() => setNavActive(false)}
