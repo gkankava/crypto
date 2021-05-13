@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import { useToasts } from "react-toast-notifications";
 
@@ -40,14 +40,6 @@ function ContactForm({ user }) {
     onSubmit: onSubmit,
   });
 
-  useEffect(() => {
-    if (user.isAuthenticated) {
-      formik.values.name = `${user.user.name} ${user.user.surname}`;
-      formik.values.email = user.user.email;
-    }
-    // eslint-disable-next-line
-  }, [user]);
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <input
@@ -56,7 +48,11 @@ function ContactForm({ user }) {
         type="text"
         placeholder="name"
         onChange={formik.handleChange}
-        value={formik.values.name}
+        value={
+          user.isAuthenticated
+            ? `${user.user.name} ${user.user.surname}`
+            : formik.values.name
+        }
         disabled={user.isAuthenticated}
         className={`contact-input ${
           formik.errors.name && "contact-input-error"
@@ -68,7 +64,9 @@ function ContactForm({ user }) {
         type="email"
         placeholder="email"
         onChange={formik.handleChange}
-        value={formik.values.email}
+        value={
+          user.isAuthenticated ? `${user.user.email}` : formik.values.email
+        }
         disabled={user.isAuthenticated}
         className={`contact-input ${
           formik.errors.email && "contact-input-error"

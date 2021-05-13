@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import eurIco from "../../assets/icons/eur-ico.svg";
@@ -6,18 +6,18 @@ import btcIco from "../../assets/icons/btc-ico.svg";
 import depositIco from "../../assets/icons/deposit-ico.svg";
 import withdrawIco from "../../assets/icons/withdraw-ico.svg";
 
-function UserPanel({ eur = 0, btc = 0 }) {
+function UserPanel({ eur = 0, btc = 0, data }) {
   return (
     <div className="user-panel">
       <div className="container user-panel-container">
         <div className="info-area">
           <span>
             <img src={eurIco} alt="euro icon" />
-            EUR: {eur}
+            EUR: {data.mybalances ? data.mybalances[0].balance : "0"}
           </span>
           <span>
             <img src={btcIco} alt="btc icon" />
-            BTC: {btc}
+            BTC: {data.mybalances ? data.mybalances[1].balance : "0"}
           </span>
         </div>
         <div className="buttons-area">

@@ -1,0 +1,140 @@
+#limits {
+  h1 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .content-wrapper {
+    .separator {
+      background-color: #26374c;
+      height: 1px;
+      width: 100%;
+    }
+    .header-wrapper {
+      display: flex;
+      display: none;
+      margin-bottom: 20px;
+      flex-direction: row;
+      justify-content: flex-start;
+      span {
+        flex: 0 0 16.666667%;
+      }
+      :first-child {
+        flex: 0 0 41.666667%;
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 0;
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 41.666667%;
+        h3 {
+          color: #26374c;
+          font-size: 18px;
+          font-weight: 400;
+        }
+        p {
+          margin: 10px 0;
+          color: #667c99;
+          font-size: 18px;
+          padding-right: 10px;
+        }
+      }
+      .inwr {
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        flex: 0 0 16.666667%;
+        span {
+          color: #26374c;
+          font-size: 18px;
+        }
+      }
+      button {
+        width: 150px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and(min-width: 940px) {
+  #limits {
+    .content-wrapper {
+      .separator {
+        background-color: #26374c;
+        height: 1px;
+        width: 100%;
+      }
+      .header-wrapper {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        span {
+          flex: 0 0 16.666667%;
+        }
+        :first-child {
+          flex: 0 0 41.666667%;
+        }
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 0;
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          flex: 0 0 41.666667%;
+          h3 {
+            color: #26374c;
+            font-size: 18px;
+            font-weight: 400;
+          }
+          p {
+            color: #667c99;
+            font-size: 18px;
+            padding-right: 10px;
+          }
+        }
+        .inwr {
+          margin-bottom: 0px;
+          display: block;
+          flex-direction: row;
+          justify-content: flex-start;
+          width: auto;
+          flex: 0 0 16.666667%;
+          .optional {
+            display: none;
+          }
+          span {
+            color: #26374c;
+            font-size: 18px;
+          }
+        }
+        a {
+          margin-left: auto;
+          button {
+            width: 150px;
+            justify-self: flex-end;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,22 +1,23 @@
 .user-panel {
   margin-bottom: 50px;
   .user-panel-container {
-    padding: 28px 0;
-    border-bottom: 1px solid #d7ddff;
+    padding: 20px 0;
+    border-bottom: 1px solid #ffffff;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     .info-area {
       display: flex;
       flex-direction: row;
+      margin-bottom: 15px;
       span {
         display: flex;
         flex-direction: row;
         align-items: center;
         font-size: 16px;
         color: #d7ddff;
-        margin-right: 35px;
+        margin-right: 10px;
         img {
           width: 15px;
           margin-right: 3px;
@@ -43,6 +44,17 @@
         justify-content: space-around;
         align-items: center;
         margin-left: 15px;
+      }
+    }
+  }
+}
+
+@media screen and(min-width: 940px) {
+  .user-panel {
+    .user-panel-container {
+      flex-direction: row;
+      .info-area {
+        margin-bottom: 0;
       }
     }
   }

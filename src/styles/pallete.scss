@@ -7,5 +7,14 @@ $grey: #f7f5fa;
 $logGrey: #b5bcce;
 $icoGrey: #d3d4e3;
 
-$linearBg: rgba(0, 0, 0, 0) linear-gradient(0deg, #ececef, rgba(0, 23, 86, 0.8))
+$linearBg: rgba(0, 0, 0, 0)
+  linear-gradient(
+    0deg,
+    #ececef,
+    #ececef,
+    rgba(82, 98, 141, 0.1),
+    rgba(82, 98, 141, 0.7),
+    rgba(16, 37, 97, 0.7),
+    rgba(0, 23, 86, 0.8)
+  )
   0 0 no-repeat padding-box;

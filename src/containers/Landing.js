@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { userProvider } from "../store/user/auth";
 
-import Exland from "../components/landing/Exland";
+import Exland from "../components/shared/exchange_panel/Exland";
 import Description from "../components/landing/Description";
 import Roadmap from "../components/landing/Roadmap";
 import Payment from "../components/landing/Payment";
