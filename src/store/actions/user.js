@@ -13,7 +13,7 @@ export const fetchUserData = (token, callback) => {
         resolve();
       })
       .catch((err) => {
-        reject();
+        console.log(err);
       });
   });
 };
@@ -38,7 +38,6 @@ export function authUser(userData, setSubmitting, callback, toast) {
           toast(err, toaster.error);
         }
         setSubmitting(false);
-        reject();
       });
   });
 }
@@ -58,7 +57,6 @@ export function registerUser(userData, setSubmitting, toast) {
       .catch((err) => {
         toast("email is already registered", toaster.error);
         setSubmitting(false);
-        reject();
       });
   });
 }

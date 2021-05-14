@@ -8,7 +8,7 @@ export const fetchPage = (path, callback) => {
         resolve();
       })
       .catch((err) => {
-        reject();
+        console.log(err);
       });
   });
 };

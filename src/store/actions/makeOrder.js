@@ -1,10 +1,14 @@
 import { apiCall } from "../../services/api";
 
-export const fetchDashboardData = (callback) => {
+export const makeOrder = (data, callback) => {
   return new Promise((resolve, reject) => {
-    return apiCall("get", `https://testapi.cryptoiex.io/api/user/dashboard`)
+    return apiCall(
+      "post",
+      `https://testapi.cryptoiex.io/api/create-order/BTCEUR/sell`,
+      data
+    )
       .then((data) => {
-        callback(data);
+        console.log(data);
         resolve();
       })
       .catch((err) => {

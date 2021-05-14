@@ -6,18 +6,24 @@ import btcIco from "../../assets/icons/btc-ico.svg";
 import depositIco from "../../assets/icons/deposit-ico.svg";
 import withdrawIco from "../../assets/icons/withdraw-ico.svg";
 
-function UserPanel({ eur = 0, btc = 0, data }) {
+function UserPanel({ data }) {
   return (
     <div className="user-panel">
       <div className="container user-panel-container">
         <div className="info-area">
           <span>
             <img src={eurIco} alt="euro icon" />
-            EUR: {data.mybalances ? data.mybalances[0].balance : "0"}
+            EUR:{" "}
+            {data.mybalances
+              ? parseFloat(data.mybalances[0].balance).toFixed(5)
+              : "0"}
           </span>
           <span>
             <img src={btcIco} alt="btc icon" />
-            BTC: {data.mybalances ? data.mybalances[1].balance : "0"}
+            BTC:{" "}
+            {data.mybalances
+              ? parseFloat(data.mybalances[1].balance).toFixed(5)
+              : "0"}
           </span>
         </div>
         <div className="buttons-area">

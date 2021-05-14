@@ -18,7 +18,6 @@ function Dashboard() {
   useEffect(() => {
     timeleft > 0 && setTimeout(() => setTimeleft(timeleft - 1), 1000);
     timeleft === 0 && setTimeout(() => setTimeleft(9), 1000);
-    console.log(timeleft);
   }, [timeleft]);
 
   return (

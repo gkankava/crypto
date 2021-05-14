@@ -7,7 +7,7 @@ import { modalProvider } from "../../../store/modal_state/modalState";
 import { userProvider } from "../../../store/user/auth";
 import { priceProvider } from "../../../store/currency";
 
-import Timer from "./Timer";
+import { makeOrder } from "../../../store/actions/makeOrder";
 
 function Exland({ timeleft }) {
   const { setAuthModalState } = modalProvider();
@@ -29,21 +29,40 @@ function Exland({ timeleft }) {
   };
 
   useEffect(() => {
-    if (currentPrice.eur !== 0) {
+    if (currentPrice.eur.buy !== 0) {
       if (curSelector.from === "EUR") {
-        let val = from / currentPrice.eur;
+        let val = from / currentPrice.eur.buy;
         setTo(parseFloat(val.toFixed(5)));
       } else {
-        let val = from * currentPrice.eur;
-        setTo(parseFloat(val.toFixed(50)));
+        let val = from * currentPrice.eur.sell;
+        setTo(parseFloat(val.toFixed(5)));
       }
     }
     // eslint-disable-next-line
   }, [from, curSelector]);
 
+  useEffect(() => {
+    if (currentPrice.eur.buy !== 0) {
+      if (curSelector.from === "EUR") {
+        let val = from / currentPrice.eur.buy;
+        setTo(parseFloat(val.toFixed(5)));
+      } else {
+        let val = from * currentPrice.eur.sell;
+        setTo(parseFloat(val.toFixed(5)));
+      }
+    }
+    // eslint-disable-next-line
+  }, [currentPrice]);
+
   const handleExchange = () => {
     if (currentUser.isAuthenticated) {
       console.log("exchange Func");
+      let data = {
+        quantity: from,
+        currency_from: curSelector.from,
+        currency_to: curSelector.to,
+      };
+      makeOrder(data);
     } else {
       setAuthModalState(true, "signup");
     }
@@ -90,7 +109,13 @@ function Exland({ timeleft }) {
             </select>
           </div>
           <div className="cont-container">
-            <span>1 BTC = {currentPrice.eur} EUR</span>
+            {curSelector.from === "EUR" ? (
+              <span>
+                1 BTC = {parseFloat(currentPrice.eur.buy).toFixed(5)} EUR
+              </span>
+            ) : (
+              <span>1 EUR = {currentPrice.eur.sell} BTC</span>
+            )}
             <CgSwapVertical color="white" size={44} onClick={handleSwap} />
           </div>
           <div className="ex-input-container">
@@ -147,15 +172,15 @@ function Exland({ timeleft }) {
           <div className="inner-container">
             <div className="price-col">
               <span className="title">usd</span>
-              <span className="price">{currentPrice.usd}</span>
+              <span className="price">{currentPrice.usd.sell}</span>
             </div>
             <span> Change over the period</span>
             <span className="change">-0.54%</span>
           </div>
           <div className="inner-container">
             <div className="price-col">
-              <span className="title">usd</span>
-              <span className="price">{currentPrice.eur}</span>
+              <span className="title">eur</span>
+              <span className="price">{currentPrice.eur.sell}</span>
             </div>
             <span> Change over the period</span>
             <span className="change">-0.54%</span>
