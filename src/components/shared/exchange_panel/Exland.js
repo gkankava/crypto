@@ -3,16 +3,28 @@ import React, { useState, useEffect, useCallback } from "react";
 import { CgSwapVertical } from "react-icons/cg";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
+import { autoUpdateCurrency } from "../../../services/autoUpdateCurrency";
+
 import { modalProvider } from "../../../store/modal_state/modalState";
 import { userProvider } from "../../../store/user/auth";
 import { priceProvider } from "../../../store/currency";
-
 import { makeOrder } from "../../../store/actions/makeOrder";
 
-function Exland({ timeleft }) {
+function Exland({ setConfirmData }) {
+  const { currentPrice, setCurrentPrice } = priceProvider();
+  const [timeleft, setTimeleft] = useState(9);
+
+  useEffect(() => {
+    autoUpdateCurrency(setCurrentPrice, timeleft, setTimeleft);
+  }, []);
+
+  useEffect(() => {
+    timeleft > 0 && setTimeout(() => setTimeleft(timeleft - 1), 1000);
+    timeleft === 0 && setTimeout(() => setTimeleft(9), 1000);
+  }, [timeleft]);
+
   const { setAuthModalState } = modalProvider();
   const { currentUser } = userProvider();
-  const { currentPrice } = priceProvider();
 
   const [from, setFrom] = useState(0);
   const [to, setTo] = useState(0);
@@ -56,13 +68,13 @@ function Exland({ timeleft }) {
 
   const handleExchange = () => {
     if (currentUser.isAuthenticated) {
-      console.log("exchange Func");
       let data = {
         quantity: from,
         currency_from: curSelector.from,
         currency_to: curSelector.to,
       };
-      makeOrder(data);
+      console.log(data);
+      makeOrder(data, setConfirmData);
     } else {
       setAuthModalState(true, "signup");
     }
