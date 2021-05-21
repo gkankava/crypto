@@ -1,9 +1,9 @@
 import React from "react";
-import {} from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import parse from "html-react-parser";
 
-function Modal({ active, header, content, close }) {
+function Modal({ active, header, content, btn, close }) {
   return (
     <div
       className="fs-modal"
@@ -18,6 +18,11 @@ function Modal({ active, header, content, close }) {
         />
         <h3>{header}</h3>
         <p>{content && parse(content)}</p>
+        {btn && (
+          <Link to="/verification/init">
+            <button onClick={btn.callback}>{btn.title}</button>
+          </Link>
+        )}
       </div>
     </div>
   );

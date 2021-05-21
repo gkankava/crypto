@@ -47,35 +47,44 @@ function ChangePasswordForm() {
   return (
     <form className="reset-pass-form" onSubmit={formik.handleSubmit}>
       <input
-        className="reset-input"
         id="currentPassword"
         name="currentPassword"
         type="password"
         placeholder="Current Password"
         onChange={formik.handleChange}
         value={formik.values.currentPassword}
-        className={formik.errors.currentPassword ? "reset-input-error" : null}
+        className={
+          formik.errors.currentPassword
+            ? "reset-input reset-input-error"
+            : "reset-input"
+        }
       />
 
       <input
-        className="reset-input"
         id="newPassword"
         name="newPassword"
         type="password"
         placeholder="New Password"
         onChange={formik.handleChange}
         value={formik.values.newPassword}
-        className={formik.errors.newPassword ? "reset-input-error" : null}
+        className={
+          formik.errors.newPassword
+            ? "reset-input reset-input-error"
+            : "reset-input"
+        }
       />
       <input
-        className="reset-input"
         id="reNewPassword"
         name="reNewPassword"
         type="password"
         placeholder="Repeat New Password"
         onChange={formik.handleChange}
         value={formik.values.reNewPassword}
-        className={formik.errors.reNewPassword ? "reset-input-error" : null}
+        className={
+          formik.errors.reNewPassword
+            ? "reset-input reset-input-error"
+            : "reset-input"
+        }
       />
       <button id="reset-btn" type="submit" disabled={formik.isSubmitting}>
         Save Changes

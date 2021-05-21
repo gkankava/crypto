@@ -1,5 +1,5 @@
-import axios from "axios";
-import React, { useState, useEffect, useCallback } from "react";
+// import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { CgSwapVertical } from "react-icons/cg";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
@@ -13,9 +13,9 @@ import { makeOrder } from "../../../store/actions/makeOrder";
 function Exland({ setConfirmData }) {
   const { currentPrice, setCurrentPrice } = priceProvider();
   const [timeleft, setTimeleft] = useState(9);
-
   useEffect(() => {
     autoUpdateCurrency(setCurrentPrice, timeleft, setTimeleft);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

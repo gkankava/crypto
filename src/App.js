@@ -44,6 +44,7 @@ function App() {
     if (currentUser.isAuthenticated) {
       fetchDashboardData(setDashboardData);
     } else setDashboardData(null);
+    // eslint-disable-next-line
   }, [currentUser]);
 
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-import ProtectedRoute from "../../router/ProtectedRoute";
+// import ProtectedRoute from "../../router/ProtectedRoute";
 
-import { userProvider } from "../../store/user/auth";
+// import { userProvider } from "../../store/user/auth";
 
 import Landing from "../../containers/Landing";
 import Dashboard from "../../containers/Dashboard";
@@ -15,12 +15,13 @@ import Contact from "../../containers/Contact";
 import Limits from "../../containers/Limits";
 import Fees from "../../containers/Fees";
 import Verification from "../../containers/Verification";
+import Init from "../../containers/Init";
 import Profile from "../../containers/Profile";
 import Wallet from "../../containers/Wallet";
 import Withdraw from "../../containers/Withdraw";
 
 function Main() {
-  const { currentUser } = userProvider();
+  // const { currentUser } = userProvider();
   return (
     <Switch>
       <Route exact path="/" render={(props) => <Landing {...props} />} />
@@ -34,8 +35,14 @@ function Main() {
       <Route path="/limits" render={(props) => <Limits {...props} />} />
       <Route path="/fees" render={(props) => <Fees {...props} />} />
       <Route
+        exact
         path="/verification"
         render={(props) => <Verification {...props} />}
+      />
+      <Route
+        exact
+        path="/verification/init"
+        render={(props) => <Init {...props} />}
       />
       <Route path="/profile" render={(props) => <Profile {...props} />} />
       <Route path="/wallet" render={(props) => <Wallet {...props} />} />

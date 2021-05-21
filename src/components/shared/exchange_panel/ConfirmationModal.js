@@ -13,6 +13,8 @@ function ConfirmationModal({ data = initialState, setData }) {
   useEffect(() => {
     timeleft > 0 && setTimeout(() => setTimeleft(timeleft - 1), 1000);
     timeleft === 0 && setData(false);
+
+    // eslint-disable-next-line
   }, [timeleft]);
 
   const { addToast } = useToasts();

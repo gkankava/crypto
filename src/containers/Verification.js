@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import VerificationCard from "../components/verification/VerificationCard";
 
 import { content } from "../components/verification/content";
 import Modal from "../components/verification/Modal";
 
-function Verification() {
+function Verification({ history }) {
   const [modalStatus, setModalStatus] = useState({
     active: false,
     header: null,
@@ -41,6 +41,11 @@ function Verification() {
         header={modalStatus.header}
         content={modalStatus.content}
         close={setModalStatus}
+        btn={{
+          status: true,
+          title: "Get started",
+          callback: () => history.push("/verification/init"),
+        }}
       />
     </section>
   );

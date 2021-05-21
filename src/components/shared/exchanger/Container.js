@@ -48,7 +48,6 @@ function Container({ method, currency }) {
             <>
               <div className="row">
                 <div
-                  className="col-btn"
                   onClick={() => setPaymentMethod("card")}
                   className={`col-btn ${paymentMethod === "card" && "active"}`}
                 >
